@@ -6,9 +6,27 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+  <div id="application_header">
+    <h1>RPG System Designer</h1>
+  </div>
 
+  <div>
+    <div id="application_sidebar">
+      <ul>
+        <li>Link1</li>
+        <li>Link2</li>
+        <li>Link3</li>
+        <li>Link4</li>
+      </ul>
+    </div>
+
+    <div id="page_content">
+      <%= yield %>
+    </div>
+  </div>
+  
 </body>
 </html>
