@@ -1,15 +1,11 @@
 <h1>Listing users</h1>
 
-<% if notice %>
-  <p id="notice"><%= notice %></p>
-<% end %>
-
 <table>
 
 <% @users.each do |user| %>
   <tr>
     <% if session[:user_id] and session[:user_id] == user.id %>
-      <td><%= link_to user.username + " (You)", edit_user_path(user) %></td>
+      <td><%= link_to user.username + " (You)", edit_user_url(user) %></td>
     <% else %>
       <td><%= link_to user.username, user %></td>
     <% end %>
