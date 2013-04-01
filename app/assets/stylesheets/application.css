@@ -16,6 +16,13 @@ html body {
   background: #E8E5DB;
 }
 
+#notice, #error {
+  font-size: 1.2em;
+}
+
+#notice { color:green; }
+#error {color:red; }
+
 #application_header {
   background: #C4BEAB;
   padding-top: 10px;
