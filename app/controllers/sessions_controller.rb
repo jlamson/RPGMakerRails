@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to pages_url, notice: "logged out"
+    redirect_to root_url, notice: "Logged Out"
   end
 end
