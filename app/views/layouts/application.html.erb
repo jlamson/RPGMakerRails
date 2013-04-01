@@ -26,6 +26,10 @@
     </div>
 
     <div id="page_content">
+      <% if flash[:alert] %>
+        <p id="error"><%= flash[:alert] %></p> 
+      <% end %>
+
       <% if notice %>
         <p id="notice"><%= notice %></p>
       <% end %>

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to root_url, alert: "You are already Logged in, please log out first if you'd like to log in as another user" if session[:user_id] 
   end
 
   def create

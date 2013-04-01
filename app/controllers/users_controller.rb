@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   private
   def redirect_if_not_logged_in
     unless session[:user_id]
-      redirect_to root_url, notice: "Please Login to use that function"
+      redirect_to root_url, alert: "Please Login to use that function"
       return true
     end
     false
@@ -103,7 +103,7 @@ class UsersController < ApplicationController
   def redirect_if_specific_user_not_logged_in(user_id)
     return true if redirect_if_not_logged_in
     unless user_id == session[:user_id] 
-      redirect_to users_url, notice: "You may only edit yourself (session=#{session[:user_id]}, passed=#{user_id})"
+      redirect_to users_url, alert: "You may only edit yourself (session=#{session[:user_id]}, passed=#{user_id})"
       return true
     end
     false

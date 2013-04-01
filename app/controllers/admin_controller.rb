@@ -8,7 +8,7 @@ end
 private
 def redirect_if_not_logged_in
   unless session[:user_id]
-    redirect_to root_url, notice: "Please Login to use that function"
+    redirect_to root_url, alert: "Please Login to use that function"
     return true
   end
   false
