@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    ensure_logged_in
+
     @users = User.order(:username)
 
     respond_to do |format|
@@ -13,6 +15,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    ensure_logged_in
+
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -34,6 +38,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    ensure_logged_in
+
     @user = User.find(params[:id])
   end
 
@@ -56,6 +62,8 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+    ensure_logged_in
+
     @user = User.find(params[:id])
 
     respond_to do |format|
@@ -78,6 +86,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+  def ensure_logged_in
+    unless session[:user_id]
+      redirect_to root_url, notice: "Please Login to use that function"
+      return
     end
   end
 end
