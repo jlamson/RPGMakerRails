@@ -2,7 +2,12 @@
 
 <% @users.each do |user| %>
   <div>
-    <%= image_tag user.pic.url, size: "100x100"%> <!-- (:thumb) %> -->
+    <% if user.pic? %> 
+      <%= image_tag user.pic.url, size: "100x100"%> <!-- (:thumb) %> -->
+    <% else %>
+      <%= image_tag "default.png", size: "100x100"%> <!-- (:thumb) %> -->
+    <% end %>
+    
     <% if session[:user_id] and session[:user_id] == user.id %>
       <%= link_to user.username + " (You)", user %>
     <% else %>
