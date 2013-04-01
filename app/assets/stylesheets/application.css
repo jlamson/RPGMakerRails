@@ -11,3 +11,33 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  background-color: #E8E5DB;
+}
+
+#application_header {
+  background: #C4BEAB;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Times New Roman", serif; 
+  color: #9B8B9B;
+  text-align: center;
+}
+
+#page_content {
+  margin-left: 10em;
+  padding-top: 4ex;
+  padding-left: 2em;
+}
+
+#application_sidebar {
+  float: left;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 9em;
+  background: #B6E0DA;
+  color: #B599B5;
+}
