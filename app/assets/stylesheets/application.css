@@ -12,8 +12,8 @@
  *= require_tree .
  */
 
-body {
-  background-color: #E8E5DB;
+html body {
+  background: #E8E5DB;
 }
 
 #application_header {
