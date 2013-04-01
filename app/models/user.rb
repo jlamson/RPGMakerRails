@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation
   validates :username, presence: true, uniqueness: true
   
-  has_attached_file :pic, styles: { medium: "300x300>", thumb; "100x100>" }
+  has_attached_file :pic, styles: { medium: "300x300>", thumb: "100x100>" }
 
   validates :password, confirmation: true
   attr_accessor :password_confirmation
