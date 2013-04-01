@@ -1,17 +1,15 @@
 <h1>Listing users</h1>
 
-<table>
-
 <% @users.each do |user| %>
-  <tr>
+  <div>
+    <%= image_tag @user.pic.url(:thumb) %>  
     <% if session[:user_id] and session[:user_id] == user.id %>
-      <td><%= link_to user.username + " (You)", user %></td>
+      <%= link_to user.username + " (You)", user %>
     <% else %>
-      <td><%= link_to user.username, user %></td>
+      <%= link_to user.username, user %>
     <% end %>
-  </tr>
+  <div>
 <% end %>
-</table>
 
 <br />
 
