@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @user.pic.url(:medium) %>
+<%= image_tag @user.pic.url, size: "300x300" %> <!-- (:medium) %> -->
 <p>
   <b>Username:</b>
   <%= @user.username %>
