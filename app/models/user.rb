@@ -16,4 +16,8 @@ class User < ActiveRecord::Base
     errors.add(:password, "Missing Password") unless hashed_password.present?
   end
 
+  def generate_salt 
+    self.salt = self.object_id.to_s + rand.to_s
+  end
+
 end
