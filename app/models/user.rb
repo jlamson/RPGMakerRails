@@ -7,6 +7,15 @@ class User < ActiveRecord::Base
 
   validate :password_must_be_set
 
+  def password=(password)
+    @password = password
+
+    if password.present?
+      generate_salt
+      self.hashed_password = self.class.encrypt_password(password, salt)
+    end 
+  end
+
   def User.encrypt_password(password, salt)
     Digest::SHA2.hexdigest(password + "NaCl" + salt)
   end
@@ -19,5 +28,4 @@ class User < ActiveRecord::Base
   def generate_salt 
     self.salt = self.object_id.to_s + rand.to_s
   end
-
 end
