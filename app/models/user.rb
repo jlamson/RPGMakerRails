@@ -7,7 +7,13 @@ class User < ActiveRecord::Base
 
   validate :password_must_be_set
 
-  private def password_must_be_set
+  def User.encrypt_password(password, salt)
+    Digest::SHA2.hexdigest(password + "NaCl" + salt)
+  end
+
+  private 
+  def password_must_be_set
     errors.add(:password, "Missing Password") unless hashed_password.present?
   end
+
 end
