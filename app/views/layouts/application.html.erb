@@ -16,7 +16,9 @@
   <div>
     <div id="application_sidebar">
       <ul>
+        <li><%= link_to "Home", root_url %></li>
         <% if session[:user_id] %>
+          <li><%= link_to "Users", users_url %></li>
           <li><%= button_to "Logout", logout_url, method: :delete %></li>
         <% else %>
           <li><%= link_to "Login", login_url %></li>
