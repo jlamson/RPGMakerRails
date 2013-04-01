@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<% if @user.pic? %> 
+  <%= image_tag @user.pic.url, size: "300x300"%> <!-- (:medium) %> -->
+<% else %>
+  <%= image_tag "default.png", size: "300x300"%> <!-- (:medium) %> -->
+<% end %>
+
 <p>
   <b>Username:</b>
   <%= @user.username %>
