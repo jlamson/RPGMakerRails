@@ -116,7 +116,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
-  paperclip
+  paperclip (~> 3.4.1)
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   sqlite3

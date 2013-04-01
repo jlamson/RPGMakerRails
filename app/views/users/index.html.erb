@@ -2,7 +2,7 @@
 
 <% @users.each do |user| %>
   <div>
-    <%= image_tag @user.pic.url(:thumb) %>  
+    <%= image_tag user.pic.url(:thumb) %>  
     <% if session[:user_id] and session[:user_id] == user.id %>
       <%= link_to user.username + " (You)", user %>
     <% else %>

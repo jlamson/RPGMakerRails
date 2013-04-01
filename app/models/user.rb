@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :password, :password_confirmation
+  attr_accessible :username, :password, :password_confirmation, :pic
   validates :username, presence: true, uniqueness: true
   
   has_attached_file :pic, styles: { medium: "300x300>", thumb: "100x100>" }
