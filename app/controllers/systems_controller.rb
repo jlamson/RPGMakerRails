@@ -1,3 +1,5 @@
+require_relative 'controller_helpers'
+
 class SystemsController < ApplicationController
   # GET /systems
   # GET /systems.json
@@ -24,6 +26,7 @@ class SystemsController < ApplicationController
   # GET /systems/new
   # GET /systems/new.json
   def new
+    return if redirect_if_not_logged_in
     @system = System.new
 
     respond_to do |format|
@@ -40,7 +43,7 @@ class SystemsController < ApplicationController
   # POST /systems
   # POST /systems.json
   def create
-    @system = System.new(params[:system])
+    @system = System.new(params[:system], user_id: session[:user_id])
 
     respond_to do |format|
       if @system.save
