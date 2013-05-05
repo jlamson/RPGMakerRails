@@ -11,7 +11,32 @@
   <%= @user.username %>
 </p>
 
-<p> TODO: Show this user's list of systems </p>
+<div>
+  <h3><%= @user.username %>'s systems</h3>
+  <table>
+    <tr>
+      <th>Parent</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Public</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @systems.each do |system| %>
+      <tr>
+        <td><%= system.parent_id %></td>
+        <td><%= system.name %></td>
+        <td><%= system.description %></td>
+        <td><%= system.is_public %></td>
+        <td><%= link_to 'Show', system %></td>
+        <td><%= link_to 'Edit', edit_system_path(system) %></td>
+        <td><%= link_to 'Destroy', system, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
 <% if session[:user_id] == @user.id %> 
   <%= link_to 'Edit', edit_user_path(@user) %> |

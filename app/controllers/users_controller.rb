@@ -1,3 +1,5 @@
+require_relative 'controller_helpers'
+
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
     return if redirect_if_not_logged_in
 
     @user = User.find(params[:id])
+    @systems = System.find_all_by_user_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    return if redirect_if_specific_user_not_logged_in(User.find_by_id(params[:id]))
+    return if redirect_if_specific_user_not_logged_in(User.find_by_id(params[:id]), "You may only edit yourself")
     @user = User.find(params[:id])
   end
 
@@ -61,7 +64,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    return if redirect_if_specific_user_not_logged_in(User.find_by_id(params[:id]))
+    return if redirect_if_specific_user_not_logged_in(User.find_by_id(params[:id]), "You may only update yourself")
 
     @user = User.find(params[:id])
 
@@ -79,7 +82,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    return if redirect_if_specific_user_not_logged_in(User.find_by_id(params[:id]))
+    return if redirect_if_specific_user_not_logged_in(User.find_by_id(params[:id]), "You may only destory yourself")
 
     @user = User.find(params[:id])
     @user.destroy
@@ -88,23 +91,5 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
-  end
-
-  private
-  def redirect_if_not_logged_in
-    unless session[:user_id]
-      redirect_to root_url, alert: "Please Login to use that function"
-      return true
-    end
-    false
-  end
-
-  def redirect_if_specific_user_not_logged_in(user)
-    return true if redirect_if_not_logged_in
-    unless user.id == session[:user_id] 
-      redirect_to users_url, alert: "You may only edit yourself"
-      return true
-    end
-    false
   end
 end

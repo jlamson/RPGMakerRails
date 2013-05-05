@@ -1,4 +1,7 @@
 RPGMakerRails::Application.routes.draw do
+  resources :systems
+
+
   get "admin" => 'admin#index'
 
   controller :sessions do

@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   
   has_attached_file :pic  #, styles: { medium: "300x300>", thumb: "100x100>" }
-
+  has_many :systems
+  
   validates :password, confirmation: true
   attr_accessor :password_confirmation
   attr_reader :password

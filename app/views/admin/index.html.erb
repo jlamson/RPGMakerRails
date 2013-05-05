@@ -1,3 +1,33 @@
 <h2>Welcome <%= @user.username %></h2>
+<p><%= link_to 'Edit my profile', edit_user_path(@user) %></p>
+<br />
 
-<p> TODO: ADD A LIST OF USER'S SYSTEMS <p>
+<div>
+  <h3>My systems</h3>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Parent</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Public</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @systems.each do |system| %>
+      <tr>
+        <td><%= system.user_id %></td>
+        <td><%= system.parent_id %></td>
+        <td><%= system.name %></td>
+        <td><%= system.description %></td>
+        <td><%= system.is_public %></td>
+        <td><%= link_to 'Show', system %></td>
+        <td><%= link_to 'Edit', edit_system_path(system) %></td>
+        <td><%= link_to 'Destroy', system, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<p><%= link_to "Add System", new_system_url %></p>
