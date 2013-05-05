@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     return if redirect_if_not_logged_in
 
     @user = User.find(params[:id])
+    @systems = System.find_all_by_user_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
