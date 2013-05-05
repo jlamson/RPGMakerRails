@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation, :pic
   validates :username, presence: true, uniqueness: true
   
-  has_attached_file :avatar,
+  has_attached_file :pic,
                     :path => "cs446/lamson/#{Rails.env}:url"
   has_many :systems
   
